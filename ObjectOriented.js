@@ -1,13 +1,14 @@
 var test = [];
 
-class ArtSupplies {                 // main class
+class ArtSupplies {                 // a list of art supply properties
     constructor(medium, brand, type, count){
         this.medium = medium;
         this.brand = brand;
         this.type = type;
         this.count = count;
         }
-    describe() {
+    // method to print out the properties of our art supplies
+    describe() {        
         console.log();
         console.log("Medium: " + this.medium);
         console.log("Brand: " + this.brand);
@@ -18,66 +19,66 @@ class ArtSupplies {                 // main class
 // test to see how ArtSupplies class prints
 // break each property into a different prompt for the user to enter
 // push each instance to an array
-var paper = new ArtSupplies('paper', 'Canson', 'watercolor', '20' + ' pages');
-test.push(paper);
-console.log('This is a test',test);
-paper.describe();  
+//var paper = new ArtSupplies('paper', 'Canson', 'watercolor', '20' + ' pages');
+//test.push(paper);
+//console.log('This is a test',test);
+//paper.describe();  
 
-class Paints extends ArtSupplies {  // first class with inheritance of ArtSupplies
-    constructor(medium, brand, type, count){
-        super(medium);
-        this.medium = medium;
-        this.brand = brand;
-        this.type = type;
-        this.count = count;
-        }
-    describe() {
-        console.log();
-        console.log("Medium: " + this.medium);
-        console.log("Brand: " + this.brand);
-        console.log("Type: " + this.type);
-        console.log("Count: " + this.count);
+class Medium{
+     constructor(mediumValue) {
+        this.medium = mediumValue;
     }
 }
-// test to see how Paints class prints
-var ganziTambi = new Paints('watercolor', 'Zig', 'pans', '36');
-ganziTambi.describe();
 
-class Markers extends ArtSupplies {   // second class with inheritance of ArtSupplies
-    constructor(brand, type, count){
-        super(brand);
-        this.brand = brand;
-        this.type = type;
-        this.count = count;
-        }
-    describe() {
-        console.log();
-        console.log("Brand: " + this.brand);
-        console.log("Type: " + this.type);
-        console.log("Count: " + this.count);
+    // start of user input
+class Menu{
+    constructor() {
+        this.artSupplies = [];
+        this.mediumSelection = null;
     }
+    start(){               // begins the iteration through the menu
+        let selection = this.showMainMenuOptions();
+        while (selection != 0);
+            switch (selection) {
+                case "1":
+                    this.createSupplyEntry;
+                    break;
+                case "2":
+                    this.viewSupplyEntry;
+                    break;
+                case "3":
+                    this.deleteSupplyEntry;
+                    break;
+                case "4":
+                    this.displaySupplies;
+                    break;
+                default:
+                    selection = 0;  
+            }
+            selection = this.showMainMenuOptions();
 }
-// test to see how Markers class prints
-var cleanColor = new Markers('Zig', 'water-based', '36');
-cleanColor.describe();
-
-class Pencils extends ArtSupplies {   // third class with inheritance of ArtSupplies
-    constructor(medium, brand, type, count){
-        super(medium);
-        console.log("Medium: " + this.medium);
-        console.log("Brand: " + this.brand);
-        console.log("Type: " + this.type);
-        console.log("Count: " + this.count);
-        }
-    describe() {
-        console.log();
-        console.log(this.medium);
-        console.log(this.brand);
-        console.log(this.type);
-        console.log(this.count);
-    }
+showMainMenuOptions() {           // ends the menu prompt if 0 is selected
+    alert("Have a good day!");
 }
-// test to see how Pencils class prints
-var inktense = ('watercolor', 'Derwent', 'ink', '72');
-inktense.describe();
+showMediumOptions() {             // prompt to pick an option
+    return prompt(`
+    1) Create a supply entry
+    2) View supply entry
+    3) Delete supply entry
+    4) Display list of entered supplies
+    0) Exit menu
+    `);
+}
+displaySupplies() {
+    
+}
+deleteSupplyEntry() {
 
+}
+createSupplyEntry() {
+    let medium = prompt(`Enter type of medium:`);
+    this.artSupplies.push(new Medium(medium));
+}
+}
+let myMenu = new Menu ();
+myMenu.start();
